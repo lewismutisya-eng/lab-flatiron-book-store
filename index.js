@@ -45,3 +45,53 @@ const bookStore = {
 
 // Write your code here!
 
+// --- STEP 1: Update the Existing Header ---
+// Select the element with the ID of 'header'
+const bookStoreTitle = document.getElementById('header');
+
+// Change its text to match the bookstore's name
+bookStoreTitle.textContent = bookStore.name;
+
+
+// --- STEP 2: Create New Elements for Each Book ---
+// Select the element where the books will go
+const bookList = document.getElementById('book-list');
+
+// Access the array of books inside the bookStore object
+const booksArray = bookStore.books;
+
+// Loop through each book one by one using a standard beginner loop
+for (let i = 0; i < booksArray.length; i++) {
+    const currentBook = booksArray[i]; // Get the data for the current book
+
+    // Create the container list item element
+    const bookContainer = document.createElement('li');
+
+    // Create the title element and set its text
+    const bookTitle = document.createElement('h3');
+    bookTitle.textContent = currentBook.title;
+
+    // Create the author element and set its text
+    const bookAuthor = document.createElement('p');
+    bookAuthor.textContent = currentBook.author;
+
+    // Create the image element and set its source link
+    const bookImage = document.createElement('img');
+    bookImage.src = currentBook.imageUrl;
+
+    // Glue the title, author, and image inside our container list item
+    bookContainer.append(bookTitle, bookAuthor, bookImage);
+
+    // Add the fully built book container into the main website list
+    bookList.append(bookContainer);
+}
+
+
+// --- STEP 3: Bonus Challenge (Delete Element) ---
+// Find the element with the ID 'delete-this'
+const elementToDelete = document.getElementById('delete-this');
+
+// If the element exists on the page, remove it completely
+if (elementToDelete) {
+    elementToDelete.remove();
+}
